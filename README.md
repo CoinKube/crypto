@@ -28,4 +28,7 @@ At the time of writing, the application consists of the following components:
 * **KrakenConnector**: A Python component responsible for connecting to the Kraken exchange via a websocket
   connection and listening to trading events. When an event is received, it is converted to a Python object,
   serialized and finally sent a queue in a message-broker.
-* **Message Broker**: A message-broker system... 
+  * **Message Broker**: A message-broker system receiving formatted messages from the KrakenConnector and publishing
+    these to a number of queues. Any application interested in the trading events can subscribe to the messages from
+    the message-broker and act upon these. Here we use the [RabbitMQ](https://www.rabbitmq.com/) message-broker
+    comppatible with AMQP.
